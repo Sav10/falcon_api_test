@@ -19,8 +19,8 @@ class Resource(object):
         	cur.execute("SELECT *, COUNT(*) FROM IPTEST")
         	row_db = cur.fetchone()
         	conn.close()
-        except Exception as e:
-        	abc = e
+        except:
+        	pass
         id_ = req.params['id']
         resp.body = ip + ' - ' + id_ + ' - ' + abc
         resp.status = falcon.HTTP_200
