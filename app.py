@@ -1,5 +1,5 @@
 import falcon
-
+import sqlite3
 ##import msgpack
 
 
@@ -8,9 +8,17 @@ class Resource(object):
     def on_get(self, req, resp):
         ##resp.data = msgpack.packb({'message': 'Hello world!'})
         ##resp.content_type = 'application/msgpack'
+        conn = sqlite3.connect('iptable.db')
+		cur = conn.cursor()
         ip = req.env['REMOTE_ADDR']
+        conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
+        conn.commit()
+        cur = conn.cursor()
+        cur.execute("SELECT *, COUNT(*) FROM IPTEST")
+        row_db = cur.fetchone()
+        conn.close()
         id_ = req.params['id']
-        resp.body = ip + ' - ' + id_
+        resp.body = ip + ' - ' + id_ + ' - ' + row_db[0]
         resp.status = falcon.HTTP_200
 
 class Homepage(object):
