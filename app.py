@@ -16,8 +16,8 @@ class Resource(object):
             #conn.commit()
             cur = conn.cursor()
             cur.execute("SELECT *, COUNT(*) FROM IPTEST")
-            row_db = cur.fetchone()
-            #abc = cur.fetchone()[0]
+            #row_db = cur.fetchone()
+            abc = cur.fetchone()[0]
             conn.close()
         except Exception as e:
             abc = e
