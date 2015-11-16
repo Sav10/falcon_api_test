@@ -20,8 +20,8 @@ class Resource(object):
             row_db = cur.fetchone()
             abc = cur.fetchone()[0]
             conn.close()
-        except:
-            pass
+        except Exception as e:
+            abc = e
         id_ = req.params['id']
         resp.body = ip + ' - ' + id_ + ' - ' + abc
         resp.status = falcon.HTTP_200
