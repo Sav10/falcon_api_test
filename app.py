@@ -12,13 +12,13 @@ class Resource(object):
         abc = "aaa"
         try :
             conn = sqlite3.connect('iptable.db')
-            cur = conn.cursor()
-            conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
-            conn.commit()
-            cur = conn.cursor()
-            cur.execute("SELECT *, COUNT(*) FROM IPTEST")
-            row_db = cur.fetchone()
-            abc = cur.fetchone()[0]
+            #cur = conn.cursor()
+            #conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
+            #conn.commit()
+            #cur = conn.cursor()
+            #cur.execute("SELECT *, COUNT(*) FROM IPTEST")
+            #row_db = cur.fetchone()
+            #abc = cur.fetchone()[0]
             conn.close()
         except Exception as e:
             abc = e
