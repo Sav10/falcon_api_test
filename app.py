@@ -8,17 +8,17 @@ class Resource(object):
     def on_get(self, req, resp):
         ##resp.data = msgpack.packb({'message': 'Hello world!'})
         ##resp.content_type = 'application/msgpack'
+        ip = req.env['REMOTE_ADDR']
         conn = sqlite3.connect('iptable.db')
 		cur = conn.cursor()
-        ip = req.env['REMOTE_ADDR']
-        conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
-        conn.commit()
+        ##conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
+        ##conn.commit()
         cur = conn.cursor()
-        cur.execute("SELECT *, COUNT(*) FROM IPTEST")
-        row_db = cur.fetchone()
+        ##cur.execute("SELECT *, COUNT(*) FROM IPTEST")
+        ##row_db = cur.fetchone()
         conn.close()
         id_ = req.params['id']
-        resp.body = ip + ' - ' + id_ + ' - ' + row_db[0]
+        resp.body = ip + ' - ' + id_ + ' - ' + "aaa"
         resp.status = falcon.HTTP_200
 
 class Homepage(object):
