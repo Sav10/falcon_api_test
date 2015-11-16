@@ -11,16 +11,16 @@ class Resource(object):
         ip = req.env['REMOTE_ADDR']
         abc = "aaa"
         try :
-        	conn = sqlite3.connect('iptable.db')
-			cur = conn.cursor()
-        	conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
-        	conn.commit()
-        	cur = conn.cursor()
-        	cur.execute("SELECT *, COUNT(*) FROM IPTEST")
-        	row_db = cur.fetchone()
-        	conn.close()
+            conn = sqlite3.connect('iptable.db')
+            cur = conn.cursor()
+            conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
+            conn.commit()
+            cur = conn.cursor()
+            cur.execute("SELECT *, COUNT(*) FROM IPTEST")
+            row_db = cur.fetchone()
+            conn.close()
         except:
-        	pass
+            pass
         id_ = req.params['id']
         resp.body = ip + ' - ' + id_ + ' - ' + abc
         resp.status = falcon.HTTP_200
