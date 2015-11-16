@@ -9,14 +9,14 @@ class Resource(object):
         ##resp.data = msgpack.packb({'message': 'Hello world!'})
         ##resp.content_type = 'application/msgpack'
         ip = req.env['REMOTE_ADDR']
-        conn = sqlite3.connect('iptable.db')
-		cur = conn.cursor()
+        ##conn = sqlite3.connect('iptable.db')
+		##cur = conn.cursor()
         ##conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip])
         ##conn.commit()
-        cur = conn.cursor()
+        ##cur = conn.cursor()
         ##cur.execute("SELECT *, COUNT(*) FROM IPTEST")
         ##row_db = cur.fetchone()
-        conn.close()
+        ##conn.close()
         id_ = req.params['id']
         resp.body = ip + ' - ' + id_ + ' - ' + "aaa"
         resp.status = falcon.HTTP_200
