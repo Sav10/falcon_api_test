@@ -11,7 +11,7 @@ class Resource(object):
         ip = req.env['REMOTE_ADDR']
         abc = "aaa"
         try :
-        	ip2 = str(ip)
+            ip2 = str(ip)
             conn = sqlite3.connect('iptable.db')
             conn.execute("INSERT INTO IPTEST (IP) VALUES (?)", [ip2])
             conn.commit()
