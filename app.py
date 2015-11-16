@@ -1,13 +1,14 @@
 import falcon
 
-import msgpack
+##import msgpack
 
 
 class Resource(object):
 
     def on_get(self, req, resp):
-        resp.data = msgpack.packb({'message': 'Hello world!'})
-        resp.content_type = 'application/msgpack'
+        ##resp.data = msgpack.packb({'message': 'Hello world!'})
+        ##resp.content_type = 'application/msgpack'
+        resp.body = "hello world"
         resp.status = falcon.HTTP_200
 
 api = application = falcon.API()
