@@ -9,6 +9,7 @@ class Resource(object):
         ##resp.data = msgpack.packb({'message': 'Hello world!'})
         ##resp.content_type = 'application/msgpack'
         ip = req.env['REMOTE_ADDR']
+        abc = "aaa"
         try :
         	conn = sqlite3.connect('iptable.db')
 			cur = conn.cursor()
@@ -19,9 +20,9 @@ class Resource(object):
         	row_db = cur.fetchone()
         	conn.close()
         except Exception as e:
-        	raise e
+        	abc = e
         id_ = req.params['id']
-        resp.body = ip + ' - ' + id_ + ' - ' + "aaa"
+        resp.body = ip + ' - ' + id_ + ' - ' + abc
         resp.status = falcon.HTTP_200
 
 class Homepage(object):
