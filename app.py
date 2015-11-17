@@ -16,10 +16,10 @@ class Resource(object):
             conn = sqlite3.connect('iptable.db')
             cur = conn.cursor()
             cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", [ip2])
-            conn.commit()
             cur.execute("SELECT *, COUNT(*) FROM IPTEST")
             row_db = cur.fetchone()
             abc = str(row_db[0])
+            conn.commit()
             conn.close()
         except Exception as e:
             abc = e
