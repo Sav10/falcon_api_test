@@ -12,13 +12,13 @@ class Resource(object):
         conn = sqlite3.connect('iptable.db')
         cur = conn.cursor()
         cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,))
-        cur.execute("SELECT *, COUNT(*) FROM IPTEST")
-        row_db = cur.fetchone()
-        abc = str(row_db[0])
+        #cur.execute("SELECT *, COUNT(*) FROM IPTEST")
+        #row_db = cur.fetchone()
+        #abc = str(row_db[0])
         conn.commit()
         conn.close()
         id_ = req.params['id']
-        resp.body = ip + ' - ' + id_ + ' - ' + abc
+        resp.body = ip + ' - ' + id_ + ' - '
         resp.status = falcon.HTTP_200
 
 class Homepage(object):
