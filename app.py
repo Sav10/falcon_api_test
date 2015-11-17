@@ -1,14 +1,10 @@
 import falcon
 import sqlite3
-##import msgpack
-import cgitb
-cgitb.enable()
+
 
 class Resource(object):
 
     def on_get(self, req, resp):
-        ##resp.data = msgpack.packb({'message': 'Hello world!'})
-        ##resp.content_type = 'application/msgpack'
         ip = req.env['REMOTE_ADDR']
         abc = "aaa"
         ip2 = str(ip)
