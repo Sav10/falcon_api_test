@@ -7,7 +7,7 @@ class Resource(object):
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
         ip2 = str(ip)
-        with sqlite3.connect('iptable.db') as conn:
+        with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,))
             cur.execute("SELECT *, COUNT(*) FROM IPTEST")
