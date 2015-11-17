@@ -15,7 +15,11 @@ class Resource(object):
         ip2 = "123456"
         conn = sqlite3.connect('iptable.db')
         cur = conn.cursor()
-        cur.execute("""INSERT INTO IPTEST VALUES (NULL, '111111111')""")
+        cur.execute("INSERT INTO IPTEST VALUES (NULL, '111111111')")
+        conn.commit()
+        conn.close()
+        conn = sqlite3.connect('iptable.db')
+        cur = conn.cursor()
         cur.execute("SELECT *, COUNT(*) FROM IPTEST")
         row_db = cur.fetchone()
         abc = str(row_db[0])
