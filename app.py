@@ -10,7 +10,7 @@ class Resource(object):
         ip2 = str(ip)
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
-            cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,id_))
+            cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
             cur.execute("SELECT *, COUNT(*) FROM IPTEST")
         row_db = cur.fetchone()
         num_rec = str(row_db[0])
