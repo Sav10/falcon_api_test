@@ -9,16 +9,16 @@ class Resource(object):
         abc = "aaa"
         ip2 = str(ip)
         ip2 = "123456"
-        conn = sqlite3.connect('iptable.db')
-        cur = conn.cursor()
-        cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,))
-        #cur.execute("SELECT *, COUNT(*) FROM IPTEST")
-        #row_db = cur.fetchone()
-        #abc = str(row_db[0])
+        with sqlite3.connect('iptable.db') as conn:
+            with conn.cursor() as cur:
+                cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,))
+                cur.execute("SELECT *, COUNT(*) FROM IPTEST")
+        row_db = cur.fetchone()
+        abc = str(row_db[0])
         conn.commit()
         conn.close()
         id_ = req.params['id']
-        resp.body = ip + ' - ' + id_ + ' - '
+        resp.body = ip + ' - ' + id_ + ' - ' + abc
         resp.status = falcon.HTTP_200
 
 class Homepage(object):
