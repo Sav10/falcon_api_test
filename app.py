@@ -6,16 +6,16 @@ class Resource(object):
 
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
+        id_ = str(req.params['id'])
         ip2 = str(ip)
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
-            cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,))
+            cur.execute("INSERT INTO IPTEST VALUES (NULL, ?)", (ip2,id_))
             cur.execute("SELECT *, COUNT(*) FROM IPTEST")
         row_db = cur.fetchone()
         num_rec = str(row_db[0])
         conn.commit()
         conn.close()
-        id_ = req.params['id']
         resp.body = ip + ' - ' + id_ + ' - ' + num_rec
         resp.status = falcon.HTTP_200
 
