@@ -12,7 +12,7 @@ class Resource(object):
             cur = conn.cursor()
             cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
             cur.execute("SELECT *, COUNT(*) FROM IPTEST LIMIT 10")
-        row_db = cur.fetchone()
+        row_db = cur.fetchall()
         num_rec = str(row_db)
         conn.commit()
         conn.close()
