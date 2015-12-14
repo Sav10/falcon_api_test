@@ -11,13 +11,13 @@ class Resource(object):
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
-            cur.execute("SELECT *  FROM IPTEST LIMIT 100")
+            cur.execute("SELECT *  FROM IPTEST LIMIT 10")
         row_db = cur.fetchall()
         num_rec = str(row_db)
         conn.commit()
         conn.close()
-        #answer01 = '[{"value":"city1"},{"value":"city2"},{"value":"city3"},{"value":"city4"}]'
-        answer01 = num_rec
+        answer01 = '[{"value":"city1"},{"value":"city2"},{"value":"city3"},{"value":"city4"}]'
+        #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
         resp.body = answer01
         resp.status = falcon.HTTP_200
