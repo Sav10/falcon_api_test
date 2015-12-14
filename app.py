@@ -28,6 +28,9 @@ class Homepage(object):
         ##resp.content_type = 'application/msgpack'
         resp.body = "this is the api's Home page"
         resp.status = falcon.HTTP_200
+        resp.set_header('X-Powered-By', 'OpenSolarMap')
+        resp.set_header('Access-Control-Allow-Origin', '*')
+        resp.set_header('Access-Control-Allow-Headers', 'X-Requested-With')
 
 api = application = falcon.API()
 
