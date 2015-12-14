@@ -20,6 +20,10 @@ class Resource(object):
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
         resp.body = answer01
         resp.status = falcon.HTTP_200
+        resp.set_header('X-Powered-By', 'Dataplazza')
+        resp.set_header('Access-Control-Allow-Origin', '*')
+        resp.set_header('Access-Control-Allow-Headers', 'X-Requested-With')
+
 
 class Homepage(object):
 
@@ -28,9 +32,6 @@ class Homepage(object):
         ##resp.content_type = 'application/msgpack'
         resp.body = "this is the api's Home page"
         resp.status = falcon.HTTP_200
-        resp.set_header('X-Powered-By', 'OpenSolarMap')
-        resp.set_header('Access-Control-Allow-Origin', '*')
-        resp.set_header('Access-Control-Allow-Headers', 'X-Requested-With')
 
 api = application = falcon.API()
 
