@@ -16,7 +16,7 @@ class Resource(object):
         num_rec = str(row_db)
         conn.commit()
         conn.close()
-        answer01 = '{"code_departement":{"abcerr":"147","azfzfrnbn":"01","btrezz":"848","trezss":"991"}}'
+        answer01 = '{"cities":{"city1":"147","city2":"01","city3":"848","city4":"991"}}'
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
         resp.body = answer01
         resp.status = falcon.HTTP_200
