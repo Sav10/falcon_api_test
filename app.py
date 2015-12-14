@@ -16,7 +16,7 @@ class Resource(object):
         num_rec = str(row_db)
         conn.commit()
         conn.close()
-        answer01 = '[{"name":"city1", "id":"01"},{"name":"city2", "id":"02"},{"name":"city3", "id":"02"},{"name":"city4", "id":"04"}]'
+        answer01 = [{"name":"city1", "id":"01"},{"name":"city2", "id":"02"},{"name":"city3", "id":"02"},{"name":"city4", "id":"04"}]
         #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
         resp.body = answer01
