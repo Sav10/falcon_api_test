@@ -11,7 +11,7 @@ class Resource(object):
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
-            cur.execute("SELECT *, COUNT(*) FROM IPTEST LIMIT")
+            cur.execute("SELECT *, COUNT(*) FROM IPTEST LIMIT 10")
         row_db = cur.fetchone()
         num_rec = str(row_db)
         conn.commit()
