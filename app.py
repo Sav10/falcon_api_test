@@ -16,7 +16,9 @@ class Resource(object):
         num_rec = str(row_db)
         conn.commit()
         conn.close()
-        resp.body = ip + ' - ' + id_ + ' - ' + num_rec
+        answer01 = '{"code_departement":{"abcerr":"147","azfzfrnbn":"01","btrezz":"848","trezss":"991"}}'
+        ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
+        resp.body = answer01
         resp.status = falcon.HTTP_200
 
 class Homepage(object):
