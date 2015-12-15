@@ -19,7 +19,7 @@ class Resource(object):
         column_names = [col[0] for col in desc]
         for row in cur.fetchall():
             data_d1.append(dict(zip(column_names, list(row))))
-        data_d1.append({'commune':id_, 'code_departement':len_var})
+        data_d1.append({'commune':id_, 'code_departement':len_var, 'commune_min':'lélélè'})
         answer = json.dumps(data_d1)
         conn.close()
         #answer01 = num_rec
