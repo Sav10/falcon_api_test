@@ -21,7 +21,10 @@ class Resource(object):
         conn.close()
         #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
-        resp.body = answer
+        answer01 = "[{'code_commune': '14001', 'code_departement': '14',  'commune': 'Ablon',  'departement': 'Calvados',  'index': 0}, {'code_commune': '14002',  'code_departement': '14',  'commune': 'Acqueville',  'departement': 'Calvados',  'index': 1}, {'code_commune': '14003',  'code_departement': '14',  'commune': 'Agy',  'departement': 'Calvados',  'index': 2}]"
+        #answer01 = num_rec
+        ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
+        resp.body = answer01
         resp.status = falcon.HTTP_200
         resp.set_header('X-Powered-By', 'Dataplazza')
         resp.set_header('Access-Control-Allow-Origin', '*')
