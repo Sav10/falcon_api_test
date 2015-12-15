@@ -1,12 +1,13 @@
 import falcon
 import sqlite3
 import json
+import urllib
 
 class Resource(object):
 
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
-        id_ = str(req.params['id']).lower()
+        id_ = str(urllib.unquote(req.params['id']).decode('utf8')).lower()
         ip2 = str(ip)
         len_var = len(id_)
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
