@@ -17,14 +17,14 @@ class Resource(object):
         column_names = [col[0] for col in desc]
         for row in cur.fetchall():
             data_d1.append(dict(zip(column_names, list(row))))
-        answer = data_d1
+        answer = str(data_d1)
         conn.close()
         #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
-        answer01 = "[{'code_commune': '14001', 'code_departement': '14',  'commune': 'Ablon',  'departement': 'Calvados',  'index': 0}, {'code_commune': '14002',  'code_departement': '14',  'commune': 'Acqueville',  'departement': 'Calvados',  'index': 1}, {'code_commune': '14003',  'code_departement': '14',  'commune': 'Agy',  'departement': 'Calvados',  'index': 2}]"
+        ##answer01 = "[{'code_commune': '14001', 'code_departement': '14',  'commune': 'Ablon',  'departement': 'Calvados',  'index': 0}, {'code_commune': '14002',  'code_departement': '14',  'commune': 'Acqueville',  'departement': 'Calvados',  'index': 1}, {'code_commune': '14003',  'code_departement': '14',  'commune': 'Agy',  'departement': 'Calvados',  'index': 2}]"
         #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
-        resp.body = answer01
+        resp.body = answer
         resp.status = falcon.HTTP_200
         resp.set_header('X-Powered-By', 'Dataplazza')
         resp.set_header('Access-Control-Allow-Origin', '*')
