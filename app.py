@@ -14,7 +14,7 @@ class Resource(object):
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
-            cur.execute("SELECT *  FROM communes_dep3 WHERE substr(commune_min, 1, ?)= ? LIMIT 3", (len_var,id_))
+            cur.execute("SELECT *  FROM communes_dep3 WHERE substr(commune_min, 1, ?)= ? LIMIT 10", (len_var,id_))
         data_d1 = []
         desc = cur.description
         column_names = [col[0] for col in desc]
