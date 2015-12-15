@@ -1,35 +1,38 @@
 import falcon
 import sqlite3
 
-
 class Resource(object):
 
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
         id_ = str(req.params['id'])
         ip2 = str(ip)
+        len_var = len(id_)
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
-            cur.execute("SELECT *  FROM IPTEST LIMIT 10")
+            cur.execute("SELECT *  FROM communes_dep2 WHERE substr(commune, 1, ?)= ? LIMIT 10", (len_var,id_))
         row_db = cur.fetchall()
-        num_rec = str(row_db)
-        conn.commit()
+        data_d1 = []
+        desc = cur.description
+        column_names = [col[0] for col in desc]
+        for row in cur.fetchall():
+            data_d1.append(dict(zip(column_names, list(row))))
+        answer = data_d1
         conn.close()
-        if (str(id_)[0:1] == 'a'):
-            answer01 = '[{"name":"aity1", "id":"01"},{"name":"aity2", "id":"02"},{"name":"aity3", "id":"02"},{"name":"aity4", "id":"04"}]'
-        elif (str(id_)[0:1] == 'c'):
-            answer01 = '[{"name":"city1", "id":"01"},{"name":"city2", "id":"02"},{"name":"city3", "id":"02"},{"name":"city4", "id":"04"}]'
-        else:
-            answer01 = '[{"name":"dity1", "id":"01"},{"name":"dity2", "id":"02"},{"name":"dity3", "id":"02"},{"name":"dity4", "id":"04"}]'
         #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
-        resp.body = answer01
+        resp.body = answer
         resp.status = falcon.HTTP_200
         resp.set_header('X-Powered-By', 'Dataplazza')
         resp.set_header('Access-Control-Allow-Origin', '*')
         resp.set_header('Access-Control-Allow-Headers', 'X-Requested-With')
 
+
+desc = cursor.description
+column_names = [col[0] for col in desc]
+data = [dict(itertools.izip(column_names, row))  
+        for row in cursor.fetchall()]
 
 class Homepage(object):
 
