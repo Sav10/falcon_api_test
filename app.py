@@ -10,8 +10,7 @@ class Resource(object):
         id_ = req.get_param("id")
         ip2 = str(ip)
         len_var = len(id_)
-        ##id_ = 'l'
-        ##len_var = 1
+
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
@@ -21,7 +20,7 @@ class Resource(object):
         column_names = [col[0] for col in desc]
         for row in cur.fetchall():
             data_d1.append(dict(zip(column_names, list(row))))
-        data_d1.append({'commune':id_, 'code_departement':len_var})
+
         answer = json.dumps(data_d1)
         conn.close()
         #answer01 = num_rec
