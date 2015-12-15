@@ -10,6 +10,8 @@ class Resource(object):
         id_ = str(urllib.unquote(req.params['id'])).lower()
         ip2 = str(ip)
         len_var = len(id_)
+        id_ = 'l'
+        len_var = 1
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
