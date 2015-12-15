@@ -12,7 +12,6 @@ class Resource(object):
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
             cur.execute("SELECT *  FROM communes_dep2 WHERE substr(commune, 1, ?)= ? LIMIT 10", (len_var,id_))
-        row_db = cur.fetchall()
         data_d1 = []
         desc = cur.description
         column_names = [col[0] for col in desc]
@@ -27,12 +26,6 @@ class Resource(object):
         resp.set_header('X-Powered-By', 'Dataplazza')
         resp.set_header('Access-Control-Allow-Origin', '*')
         resp.set_header('Access-Control-Allow-Headers', 'X-Requested-With')
-
-
-desc = cursor.description
-column_names = [col[0] for col in desc]
-data = [dict(itertools.izip(column_names, row))  
-        for row in cursor.fetchall()]
 
 class Homepage(object):
 
