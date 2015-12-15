@@ -7,7 +7,7 @@ class Resource(object):
 
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
-        id_ = str(req.get_param("id"))
+        id_ = req.get_param("id")
         ip2 = str(ip)
         len_var = len(id_)
         ##id_ = 'l'
