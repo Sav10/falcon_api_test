@@ -6,7 +6,7 @@ class Resource(object):
 
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
-        id_ = str(req.params['id']).str.lower()
+        id_ = str(req.params['id']).lower()
         ip2 = str(ip)
         len_var = len(id_)
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
