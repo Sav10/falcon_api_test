@@ -1,5 +1,6 @@
 import falcon
 import sqlite3
+import json
 
 class Resource(object):
 
@@ -17,7 +18,7 @@ class Resource(object):
         column_names = [col[0] for col in desc]
         for row in cur.fetchall():
             data_d1.append(dict(zip(column_names, list(row))))
-        answer = str(data_d1)
+        answer = json.dumps(data_d1)
         conn.close()
         #answer01 = num_rec
         ##resp.body = ip + ' - ' + id_ + ' - ' + num_rec
