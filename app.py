@@ -9,7 +9,7 @@ class Resource(object):
         ip = req.env['REMOTE_ADDR']
         ##id_ = str(urllib.unquote(req.params['id'])).lower()
         ip2 = str(ip)
-        len_var = len(id_)
+        ##len_var = len(id_)
         id_ = 'l'
         len_var = 1
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
