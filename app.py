@@ -8,11 +8,11 @@ class Resource(object):
         ip = req.env['REMOTE_ADDR']
         id_ = str(req.params['id'])
         ip2 = str(ip)
-        len_var = len(id_)
+        len_var = len(id_).str.lower()
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
-            cur.execute("SELECT *  FROM communes_dep2 WHERE substr(commune, 1, ?)= ? LIMIT 10", (len_var,id_))
+            cur.execute("SELECT *  FROM communes_dep3 WHERE substr(commune_min, 1, ?)= ? LIMIT 10", (len_var,id_))
         data_d1 = []
         desc = cur.description
         column_names = [col[0] for col in desc]
