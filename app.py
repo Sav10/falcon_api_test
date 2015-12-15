@@ -6,9 +6,9 @@ class Resource(object):
 
     def on_get(self, req, resp):
         ip = req.env['REMOTE_ADDR']
-        id_ = str(req.params['id'])
+        id_ = str(req.params['id']).str.lower()
         ip2 = str(ip)
-        len_var = len(id_).str.lower()
+        len_var = len(id_)
         with sqlite3.connect('/var/db_dtp/iptable.db') as conn:
             cur = conn.cursor()
             ##cur.execute("INSERT INTO IPTEST VALUES (NULL, ?, ?)", (ip2,id_))
